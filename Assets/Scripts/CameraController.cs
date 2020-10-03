@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        Cursor.SetCursor(this.cursor, Vector2.zero, CursorMode.Auto);
+        //Cursor.SetCursor(this.cursor, Vector2.zero, CursorMode.Auto);
 
         this.mouseOffset = this.CalculateMouseOffset();
 

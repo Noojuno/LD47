@@ -17,12 +17,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 targetPosition;
 
-    void Awake()
-    {
-        this.rigidBody = this.GetComponent<Rigidbody2D>();
-        this.animator = this.GetComponent<Animator>();
-    }
-
     void Update()
     {
         // INPUT
