@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movement;
     private Vector2 previousMovement;
-    private bool facingRight = true;
 
     private Vector3 targetPosition;
 
