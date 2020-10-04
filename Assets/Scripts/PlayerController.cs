@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float holdSpeedMultiplier = 0.8f;
     public Vector2 interactOffset;
     public float interactDistance = 2f;
+    public bool movementEnabled = true;
 
     public Transform holdPosition;
     public GameObject holding;
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        this.DoMovement();
+        if (this.movementEnabled) this.DoMovement();
         this.DoInteraction();
         this.DoInput();
     }

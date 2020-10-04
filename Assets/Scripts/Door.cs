@@ -13,27 +13,16 @@ public class Door : MonoBehaviour
     public bool isOneWay;
     public float automaticOpenRange = 0.6f;
 
-    private PlayerController player;
-
-    void Start()
-    {
-        GameObject gameObj = GameObject.FindGameObjectWithTag("Player");
-
-        if (gameObj != null && gameObj.GetComponent<PlayerController>() != null)
-        {
-            this.player = gameObj.GetComponent<PlayerController>();
-        }
-    }
-
     void Update()
     {
         this.lockIcon.SetActive(this.isLocked && !this.isOpen);
 
         if (this.isAutomatic)
         {
-            var dist = Vector3.Distance(this.transform.position, this.player.transform.position);
+            var player = GameManager.Instance.Player;
+            var dist = Vector3.Distance(this.transform.position, player.transform.position);
 
-            if (dist <= this.automaticOpenRange && (!this.isOneWay || this.player.transform.position.y <= this.transform.position.y + 0.05))
+            if (dist <= this.automaticOpenRange && (!this.isOneWay || player.transform.position.y <= this.transform.position.y + 0.05))
             {
                 if (!this.isOpen) this.Open(true);
             }

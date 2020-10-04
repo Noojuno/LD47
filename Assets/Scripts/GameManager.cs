@@ -11,9 +11,11 @@ public class GameManager : Singleton<GameManager>
     public float timeRemaining = 5;
     public bool timerStarted = false;
 
-    private PlayerController player;
+    public Portal loopPortal;
 
-    public PlayerController Player => this.player;
+    private PlayerController _player;
+
+    public PlayerController Player => this._player;
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class GameManager : Singleton<GameManager>
 
         if (gameObj != null && gameObj.GetComponent<PlayerController>() != null)
         {
-            this.player = gameObj.GetComponent<PlayerController>();
+            this._player = gameObj.GetComponent<PlayerController>();
         }
     }
 
@@ -60,7 +62,7 @@ public class GameManager : Singleton<GameManager>
     public void Loop()
     {
         this.timeRemaining = this.loopLength;
-        this.player.transform.position = new Vector3(-3f, -2f);
+        this._player.transform.position = this.loopPortal.transform.position;
         this.SetTimeRunning(false);
 
         // LOOP

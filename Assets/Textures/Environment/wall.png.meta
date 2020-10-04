@@ -71,6 +71,15 @@ TextureImporter:
   - first:
       213: 930890307446563863
     second: wall_8
+  - first:
+      213: -6726083762602269912
+    second: wall_12
+  - first:
+      213: 4876726026296962976
+    second: wall_9
+  - first:
+      213: 5074182518397019890
+    second: wall_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -174,7 +183,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 98
+        y: 147
         width: 32
         height: 45
       alignment: 9
@@ -195,7 +204,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 98
+        y: 147
         width: 32
         height: 45
       alignment: 9
@@ -216,7 +225,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 98
+        y: 147
         width: 32
         height: 45
       alignment: 9
@@ -237,7 +246,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 108
-        y: 98
+        y: 147
         width: 32
         height: 45
       alignment: 9
@@ -258,7 +267,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 49
+        y: 98
         width: 32
         height: 45
       alignment: 9
@@ -279,7 +288,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 49
+        y: 98
         width: 32
         height: 45
       alignment: 9
@@ -300,7 +309,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 49
+        y: 98
         width: 32
         height: 45
       alignment: 9
@@ -321,7 +330,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 108
-        y: 49
+        y: 98
         width: 32
         height: 45
       alignment: 9
@@ -342,7 +351,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 49
         width: 32
         height: 45
       alignment: 9
@@ -362,8 +371,8 @@ TextureImporter:
       name: wall_9
       rect:
         serializedVersion: 2
-        x: 72
-        y: 0
+        x: 36
+        y: 49
         width: 32
         height: 45
       alignment: 9
@@ -373,8 +382,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 953ab292843d2e6c0800000000000000
-      internalID: -4115494802581380263
+      spriteID: 0af2550ab7c9da340800000000000000
+      internalID: 4876726026296962976
       vertices: []
       indices: 
       edges: []
@@ -383,7 +392,28 @@ TextureImporter:
       name: wall_10
       rect:
         serializedVersion: 2
-        x: 108
+        x: 72
+        y: 49
+        width: 32
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.11}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f62d86cd1e1b6640800000000000000
+      internalID: 5074182518397019890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_11
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 32
         height: 45
@@ -394,8 +424,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffc8ff97afebf21d0800000000000000
-      internalID: -3373267612879319809
+      spriteID: f274617bae0cca2b0800000000000000
+      internalID: -5571866524637575377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_12
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 32
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.11}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 823a198447628a2a0800000000000000
+      internalID: -6726083762602269912
       vertices: []
       indices: 
       edges: []

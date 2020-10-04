@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5381153769289946764, guid: e0b0b369e1afa884da5d21bfac537318, type: 3}
+  m_Sprite: {fileID: 6356908062157346430, guid: e0b0b369e1afa884da5d21bfac537318, type: 3}
   m_Color: {r: 0.8745099, g: 0.4431373, b: 0.14901961, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 6458036137675294341}
   - component: {fileID: 6458036137675294340}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall Horizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,7 +261,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1.25}
+  m_Size: {x: 1, y: 1.40625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
