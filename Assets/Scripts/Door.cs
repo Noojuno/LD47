@@ -6,6 +6,8 @@ public class Door : MonoBehaviour
 {
     public Animator animator;
     public GameObject lockIcon;
+    public GameObject oneWayIcon;
+    public GameObject bothIcons;
     public bool stayOpen = false;
     public bool isLocked;
     public bool isOpen;
@@ -15,7 +17,9 @@ public class Door : MonoBehaviour
 
     void Update()
     {
-        this.lockIcon.SetActive(this.isLocked && !this.isOpen);
+        if (this.lockIcon != null) this.lockIcon.SetActive(this.isLocked && !this.isOneWay && !this.isOpen);
+        if (this.oneWayIcon != null) this.oneWayIcon.SetActive(this.isOneWay && !this.isLocked && !this.isOpen);
+        if (this.bothIcons != null) this.bothIcons.SetActive(this.isOneWay && this.isLocked && !this.isOpen);
 
         if (this.isAutomatic)
         {

@@ -9,13 +9,6 @@ public class Interactable : MonoBehaviour, IInteractable
 {
     public SpriteRenderer spriteRenderer;
 
-    private Color initialColor;
-
-    void Awake()
-    {
-        this.initialColor = spriteRenderer.color;
-    }
-
     public virtual void OnInteract(PlayerController interactor)
     {
         Debug.Log("Interactable go brrrrrrrrrrrr");
@@ -23,11 +16,11 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public virtual void OnSelect(PlayerController selector)
     {
-        this.spriteRenderer.color = Color.red;
+        this.spriteRenderer.material.SetColor("_Tint", new Color(1, 1, 1, 0.3f));
     }
 
     public virtual void OnDeselect(PlayerController selector)
     {
-        this.spriteRenderer.color = this.initialColor;
+        this.spriteRenderer.material.SetColor("_Tint", new Color(0, 0, 0, 0));
     }
 }

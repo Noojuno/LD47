@@ -14,22 +14,21 @@ public class PlayerController : MonoBehaviour
     [Header("Variables")]
     public float movementSpeed = 5f;
     public float holdSpeedMultiplier = 0.8f;
-    public Vector2 interactOffset;
-    public float interactDistance = 2f;
     public bool movementEnabled = true;
 
     public Transform holdPosition;
     public GameObject holding;
 
     private Vector2 movement;
-    private Vector2 facing;
+    public Vector2 facing;
 
     private Interactable selectedInteractable;
+    private float existingInteractDistance = 100f;
 
     void Update()
     {
         if (this.movementEnabled) this.DoMovement();
-        this.DoInteraction();
+        this.DoHolding();
         this.DoInput();
     }
 
@@ -46,11 +45,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void DoInteraction()
+    void DoHolding()
     {
-        Debug.DrawRay(transform.position, (facing + this.interactOffset) * interactDistance, Color.red);
-        Physics2D.Raycast(transform.position, (facing + this.interactOffset), interactDistance);
-
         if (this.holding != null)
         {
             this.holding.transform.position = this.holdPosition.position;
@@ -67,10 +63,10 @@ public class PlayerController : MonoBehaviour
         if (this.movement.sqrMagnitude > 0)
         {
             this.facing = this.movement;
-
-            this.animator.SetFloat("FacingHorizontal", this.facing.x);
-            this.animator.SetFloat("FacingVertical", this.facing.y);
         }
+
+        this.animator.SetFloat("FacingHorizontal", this.facing.x);
+        this.animator.SetFloat("FacingVertical", this.facing.y);
 
         this.animator.SetFloat("Horizontal", this.movement.x);
         this.animator.SetFloat("Vertical", this.movement.y);
@@ -107,27 +103,36 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void CalculateNearestInteractable(GameObject collider)
     {
         //if (collider.gameObject.layer != LayerMask.NameToLayer("Interactable")) return;
 
         if (this.holding != null) return;
 
         float distance = Vector3.Distance(this.transform.position, collider.transform.position);
-        float existingDistance = this.selectedInteractable != null
-            ? Vector3.Distance(this.transform.position, this.selectedInteractable.transform.position)
-            : 0;
-
-        if (distance <= existingDistance) return;
+        if (distance >= this.existingInteractDistance) return;
 
         var interactable = collider.gameObject.GetComponent<Interactable>();
 
         if (interactable != null)
         {
+            if (this.selectedInteractable != null)
+            {
+                this.selectedInteractable?.OnDeselect(this);
+            }
+
             this.selectedInteractable = interactable;
+            this.existingInteractDistance = distance;
             this.selectedInteractable?.OnSelect(this);
             Debug.Log(interactable);
         }
+    }
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.gameObject == this.selectedInteractable?.gameObject) return;
+
+        this.CalculateNearestInteractable(collider.gameObject);
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -135,6 +140,7 @@ public class PlayerController : MonoBehaviour
         if(collider.gameObject != this.selectedInteractable?.gameObject) return;
 
         this.selectedInteractable?.OnDeselect(this);
+        this.existingInteractDistance = 100f;
 
         if (this.selectedInteractable.gameObject != this.holding) this.selectedInteractable = null;
     }

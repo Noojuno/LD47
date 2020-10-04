@@ -25,6 +25,8 @@ public class GameManager : Singleton<GameManager>
         {
             this._player = gameObj.GetComponent<PlayerController>();
         }
+
+        this._player.transform.position = this.loopPortal.transform.position;
     }
 
     void Update()
@@ -61,8 +63,10 @@ public class GameManager : Singleton<GameManager>
 
     public void Loop()
     {
+        //this._player.movementEnabled = false;
         this.timeRemaining = this.loopLength;
         this._player.transform.position = this.loopPortal.transform.position;
+        this._player.facing = Vector2.down;
         this.SetTimeRunning(false);
 
         // LOOP

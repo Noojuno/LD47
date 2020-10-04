@@ -10,4 +10,11 @@ public class Portal : MonoBehaviour
 
         GameManager.Instance.SetTimeRunning(true);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject != GameManager.Instance.Player.gameObject) return;
+
+        GameManager.Instance.SetTimeRunning(false);
+    }
 }
