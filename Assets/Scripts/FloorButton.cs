@@ -19,7 +19,9 @@ public class FloorButton : MonoBehaviour
     void Start()
     {
         if (this.triggerEvent == null)
+        {
             this.triggerEvent = new UnityEvent<bool>();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
