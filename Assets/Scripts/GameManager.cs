@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public TextMeshProUGUI loopTimerText;
     public float loopLength = 10;
     public float timeRemaining = 5;
+    public bool timerStarted = false;
 
-    private bool timerStarted = true;
     private PlayerController player;
+
+    public PlayerController Player => this.player;
 
     void Start()
     {
@@ -40,25 +42,26 @@ public class GameManager : MonoBehaviour
         this.loopTimerText.SetText($"TIME REMAINING\n<color={color}>{time:mm\\:ss}</color>");
     }
 
-    void SetLoopLength(int length)
+    public void SetLoopLength(int length)
     {
         this.loopLength = length;
     }
 
-    void SetTimeRemaining(int timeRemaning)
+    public void SetTimeRemaining(int timeRemaning)
     {
         this.timeRemaining = timeRemaning;
     }
 
-    void SetTimeRunning(bool running)
+    public void SetTimeRunning(bool running)
     {
         this.timerStarted = running;
     }
 
-    void Loop()
+    public void Loop()
     {
         this.timeRemaining = this.loopLength;
         this.player.transform.position = new Vector3(-3f, -2f);
+        this.SetTimeRunning(false);
 
         // LOOP
         // DISABLE INPUT

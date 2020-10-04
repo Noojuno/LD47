@@ -7,5 +7,9 @@ using UnityEngine;
 
 interface IInteractable
 {
-    void OnInteract(GameObject interactor);
+    void OnInteract(PlayerController interactor);
+
+    void OnSelect(PlayerController selector);
+
+    void OnDeselect(PlayerController selector);
 }

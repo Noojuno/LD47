@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -22,9 +23,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private Vector2 facing;
 
-    private Vector3 targetPosition;
-
-    private 
+    private Interactable selectedInteractable;
 
     void Update()
     {
@@ -35,9 +34,14 @@ public class PlayerController : MonoBehaviour
 
     void DoInput()
     {
-        if (Input.GetKeyDown(KeyCode.E) && this.holding != null)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            this.Hold(null);
+            this.selectedInteractable?.OnInteract(this);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            GameManager.Instance.Loop();
         }
     }
 
@@ -69,15 +73,6 @@ public class PlayerController : MonoBehaviour
 
         this.animator.SetFloat("Horizontal", this.movement.x);
         this.animator.SetFloat("Vertical", this.movement.y);
-
-        //targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //targetPosition.z = transform.position.z;
-
-        //Vector3 deltaPosition = targetPosition - transform.position;
-        //this.facing = deltaPosition.normalized;
-
-        //animator.SetFloat("Horizontal", this.facing.x);
-        //animator.SetFloat("Vertical", this.facing.y);
         this.animator.SetFloat("Speed", this.movement.sqrMagnitude);
     }
 
@@ -90,7 +85,7 @@ public class PlayerController : MonoBehaviour
         this.rigidBody.MovePosition(this.rigidBody.position + this.movement * moveSpeed * Time.fixedDeltaTime);
     }
     
-    void Hold(GameObject obj)
+    public void Hold(GameObject obj)
     {
         if (this.holding != null && this.holding != obj)
         {
@@ -113,6 +108,33 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider);
+        //if (collider.gameObject.layer != LayerMask.NameToLayer("Interactable")) return;
+
+        if (this.holding != null) return;
+
+        float distance = Vector3.Distance(this.transform.position, collider.transform.position);
+        float existingDistance = this.selectedInteractable != null
+            ? Vector3.Distance(this.transform.position, this.selectedInteractable.transform.position)
+            : 0;
+
+        if (distance <= existingDistance) return;
+
+        var interactable = collider.gameObject.GetComponent<Interactable>();
+
+        if (interactable != null)
+        {
+            this.selectedInteractable = interactable;
+            this.selectedInteractable?.OnSelect(this);
+            Debug.Log(interactable);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if(collider.gameObject != this.selectedInteractable?.gameObject) return;
+
+        this.selectedInteractable?.OnDeselect(this);
+
+        if (this.selectedInteractable.gameObject != this.holding) this.selectedInteractable = null;
     }
 }

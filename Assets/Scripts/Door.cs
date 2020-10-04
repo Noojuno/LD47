@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour, IInteractable
+public class Door : MonoBehaviour
 {
     public Animator animator;
     public GameObject lockIcon;
@@ -10,6 +10,7 @@ public class Door : MonoBehaviour, IInteractable
     public bool isLocked;
     public bool isOpen;
     public bool isAutomatic;
+    public bool isOneWay;
     public float automaticOpenRange = 0.6f;
 
     private PlayerController player;
@@ -30,7 +31,9 @@ public class Door : MonoBehaviour, IInteractable
 
         if (this.isAutomatic)
         {
-            if (Vector3.Distance(this.transform.position, this.player.transform.position) <= this.automaticOpenRange)
+            var dist = Vector3.Distance(this.transform.position, this.player.transform.position);
+
+            if (dist <= this.automaticOpenRange && (!this.isOneWay || this.player.transform.position.y <= this.transform.position.y + 0.15))
             {
                 if (!this.isOpen) this.Open(true);
             }
@@ -54,8 +57,8 @@ public class Door : MonoBehaviour, IInteractable
         this.animator.SetBool("Open", open);
     }
 
-    public void OnInteract(GameObject interactor)
-    {
-        this.Open(!this.isOpen);
-    }
+    //public void OnInteract(GameObject interactor)
+    //{
+    //    this.Open(!this.isOpen);
+    //}
 }

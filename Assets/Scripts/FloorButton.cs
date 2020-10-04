@@ -26,6 +26,8 @@ public class FloorButton : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.isTrigger) return;
+
         if (this.currentColliders.Count <= 0)
         {
             this.triggered = true;
@@ -38,6 +40,8 @@ public class FloorButton : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D col)
     {
+        if (col.isTrigger) return;
+
         this.currentColliders.Remove(col);
 
         if (this.currentColliders.Count <= 0)
