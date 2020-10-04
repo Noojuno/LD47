@@ -14,6 +14,8 @@ public class FloorButton : MonoBehaviour
     public bool triggered = false;
     public UnityEvent<bool> triggerEvent;
 
+    private List<Collider2D> currentColliders = new List<Collider2D>();
+
     void Start()
     {
         if (this.triggerEvent == null)
@@ -22,19 +24,25 @@ public class FloorButton : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        this.triggered = true;
+        if (this.currentColliders.Count <= 0)
+        {
+            this.triggered = true;
+            this.spriteRenderer.sprite = activeSprite;
+            this.triggerEvent.Invoke(true);
+        }
 
-        this.spriteRenderer.sprite = activeSprite;
-
-        this.triggerEvent.Invoke(true);
+        this.currentColliders.Add(col);
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        this.triggered = false;
+        this.currentColliders.Remove(col);
 
-        this.spriteRenderer.sprite = inactiveSprite;
-
-        this.triggerEvent.Invoke(false);
+        if (this.currentColliders.Count <= 0)
+        {
+            this.triggered = false;
+            this.spriteRenderer.sprite = inactiveSprite;
+            this.triggerEvent.Invoke(false);
+        }
     }
 }
