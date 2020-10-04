@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Components")] public Rigidbody2D rigidBody;
+    [Header("Components")]
+    public Rigidbody2D rigidBody;
     public Animator animator;
 
-    [Header("Variables")] public float movementSpeed = 5f;
+    [Header("Variables")]
+    public float movementSpeed = 5f;
+    public float holdSpeedMultiplier = 0.8f;
     public Vector2 interactOffset;
     public float interactDistance = 2f;
 
@@ -20,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 facing;
 
     private Vector3 targetPosition;
+
+    private 
 
     void Update()
     {
@@ -78,7 +83,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        this.rigidBody.MovePosition(this.rigidBody.position + this.movement * this.movementSpeed * Time.fixedDeltaTime);
+        float moveSpeed = this.movementSpeed;
+
+        if (this.holding != null) moveSpeed *= this.holdSpeedMultiplier;
+
+        this.rigidBody.MovePosition(this.rigidBody.position + this.movement * moveSpeed * Time.fixedDeltaTime);
     }
     
     void Hold(GameObject obj)
@@ -100,5 +109,10 @@ public class PlayerController : MonoBehaviour
                 this.holding.GetComponent<Rigidbody2D>().simulated = false;
             }
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log(collider);
     }
 }
