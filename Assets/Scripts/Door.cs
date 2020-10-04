@@ -33,7 +33,7 @@ public class Door : MonoBehaviour
         {
             var dist = Vector3.Distance(this.transform.position, this.player.transform.position);
 
-            if (dist <= this.automaticOpenRange && (!this.isOneWay || this.player.transform.position.y <= this.transform.position.y + 0.15))
+            if (dist <= this.automaticOpenRange && (!this.isOneWay || this.player.transform.position.y <= this.transform.position.y + 0.05))
             {
                 if (!this.isOpen) this.Open(true);
             }

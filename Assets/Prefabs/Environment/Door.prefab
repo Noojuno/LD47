@@ -267,8 +267,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3354420562952148359}
   lockIcon: {fileID: 5365292847322546942}
-  locked: 0
-  open: 0
+  stayOpen: 0
+  isLocked: 0
+  isOpen: 0
+  isAutomatic: 0
+  isOneWay: 0
+  automaticOpenRange: 0.6
 --- !u!1 &7331450589325501901
 GameObject:
   m_ObjectHideFlags: 0

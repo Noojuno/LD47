@@ -50,6 +50,27 @@ TextureImporter:
   - first:
       213: 5236377290757629937
     second: wall_6
+  - first:
+      213: -7850380311542539340
+    second: wall_7
+  - first:
+      213: 6356908062157346430
+    second: wall_8
+  - first:
+      213: -4115494802581380263
+    second: wall_9
+  - first:
+      213: -3373267612879319809
+    second: wall_10
+  - first:
+      213: -5571866524637575377
+    second: wall_11
+  - first:
+      213: 7653841056462394939
+    second: wall_7
+  - first:
+      213: 930890307446563863
+    second: wall_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -153,9 +174,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 88
+        y: 98
         width: 32
-        height: 40
+        height: 45
       alignment: 9
       pivot: {x: 0.5, y: 0.11}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,9 +195,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 36
-        y: 88
+        y: 98
         width: 32
-        height: 40
+        height: 45
       alignment: 9
       pivot: {x: 0.5, y: 0.11}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,9 +216,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 88
+        y: 98
         width: 32
-        height: 40
+        height: 45
       alignment: 9
       pivot: {x: 0.5, y: 0.11}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +236,10 @@ TextureImporter:
       name: wall_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 44
+        x: 108
+        y: 98
         width: 32
-        height: 40
+        height: 45
       alignment: 9
       pivot: {x: 0.5, y: 0.11}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,10 +257,10 @@ TextureImporter:
       name: wall_4
       rect:
         serializedVersion: 2
-        x: 36
-        y: 44
+        x: 0
+        y: 49
         width: 32
-        height: 40
+        height: 45
       alignment: 9
       pivot: {x: 0.5, y: 0.11}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,10 +278,10 @@ TextureImporter:
       name: wall_5
       rect:
         serializedVersion: 2
-        x: 72
-        y: 44
+        x: 36
+        y: 49
         width: 32
-        height: 40
+        height: 45
       alignment: 9
       pivot: {x: 0.5, y: 0.11}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +299,10 @@ TextureImporter:
       name: wall_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 72
+        y: 49
         width: 32
-        height: 40
+        height: 45
       alignment: 9
       pivot: {x: 0.5, y: 0.11}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,6 +312,90 @@ TextureImporter:
       bones: []
       spriteID: 1f7e78507695ba840800000000000000
       internalID: 5236377290757629937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_7
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 49
+        width: 32
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.11}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b36ddb993e7e73a60800000000000000
+      internalID: 7653841056462394939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.11}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 714e4347dcf2bec00800000000000000
+      internalID: 930890307446563863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_9
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 32
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.11}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953ab292843d2e6c0800000000000000
+      internalID: -4115494802581380263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_10
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 32
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.11}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffc8ff97afebf21d0800000000000000
+      internalID: -3373267612879319809
       vertices: []
       indices: 
       edges: []
