@@ -6,10 +6,9 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public TextMeshProUGUI loopTimerText;
     public float loopLength = 10;
-    public float timeRemaining = 5;
-    public bool timerStarted = false;
+    public float timeRemaining = 10;
+    public bool runTimer = false;
 
     public Portal loopPortal;
 
@@ -31,7 +30,7 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        if (timeRemaining > 0 && this.timerStarted)
+        if (timeRemaining > 0 && this.runTimer)
         {
             timeRemaining -= Time.deltaTime;
         }
@@ -40,10 +39,6 @@ public class GameManager : Singleton<GameManager>
         {
             this.Loop();
         }
-
-        TimeSpan time = TimeSpan.FromSeconds(this.timeRemaining);
-        String color = this.timeRemaining <= 5 ? "red" : "white";
-        this.loopTimerText.SetText($"TIME REMAINING\n<color={color}>{time:mm\\:ss}</color>");
     }
 
     public void SetLoopLength(int length)
@@ -58,7 +53,13 @@ public class GameManager : Singleton<GameManager>
 
     public void SetTimeRunning(bool running)
     {
-        this.timerStarted = running;
+        this.runTimer = running;
+    }
+
+    public void SetPaused(bool paused)
+    {
+        this.SetTimeRunning(!paused);
+        this.Player.movementEnabled = !paused;
     }
 
     public void Loop()

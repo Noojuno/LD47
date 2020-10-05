@@ -123,8 +123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1303045896779655994}
+  requiredObjectsText: {fileID: 0}
   inactiveSprite: {fileID: 6172199209985607747, guid: c87b4df23640be14daeaed9db10e2f0c, type: 3}
   activeSprite: {fileID: -3411921935447882633, guid: c87b4df23640be14daeaed9db10e2f0c, type: 3}
+  activeTextPosition: {x: -0.0011, y: -0.01, z: 0}
+  requiredObjects: 1
   triggered: 0
   triggerEvent:
     m_PersistentCalls:

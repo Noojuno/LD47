@@ -7,15 +7,17 @@ using UnityEngine;
 
 public class Holdable : Interactable
 {
-    public override void OnInteract(PlayerController interactor)
+    public override void OnInteract(PlayerController player)
     {
-        if (interactor.holding == this.gameObject)
+        base.OnInteract(player);
+
+        if (player.holding == this.gameObject)
         {
-            interactor.Hold(null);
+            player.Hold(null);
         }
         else
         {
-            interactor.Hold(this.gameObject);
+            player.Hold(this.gameObject);
         }
     }
 }
