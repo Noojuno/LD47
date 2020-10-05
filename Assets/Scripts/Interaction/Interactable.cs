@@ -8,10 +8,10 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    public List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
     public UnityEvent<PlayerController> OnInteractEvent;
 
-    public void Start()
+    public virtual void Start()
     {
         if (this.OnInteractEvent == null)
         {
@@ -26,11 +26,17 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnSelect(PlayerController player)
     {
-        this.spriteRenderer.material.SetColor("_Tint", new Color(1, 1, 1, 0.3f));
+        foreach (var spriteRenderer in this.spriteRenderers)
+        {
+            spriteRenderer.material.SetColor("_Tint", new Color(1, 1, 1, 0.3f));
+        }
     }
 
     public virtual void OnDeselect(PlayerController player)
     {
-        this.spriteRenderer.material.SetColor("_Tint", new Color(0, 0, 0, 0));
+        foreach (var spriteRenderer in this.spriteRenderers)
+        {
+            spriteRenderer.material.SetColor("_Tint", new Color(0, 0, 0, 0));
+        }
     }
 }

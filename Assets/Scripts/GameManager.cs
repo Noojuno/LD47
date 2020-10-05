@@ -9,6 +9,7 @@ public class GameManager : Singleton<GameManager>
     public float loopLength = 10;
     public float timeRemaining = 10;
     public bool runTimer = false;
+    public bool showTimer = true;
 
     public Portal loopPortal;
 
@@ -60,14 +61,14 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void SetLoopLength(int length)
+    public void SetLoopLength(float length)
     {
         this.loopLength = length;
     }
 
-    public void SetTimeRemaining(int timeRemaning)
+    public void SetTimeRemaining(float timeRemaining)
     {
-        this.timeRemaining = timeRemaning;
+        this.timeRemaining = timeRemaining;
     }
 
     public void SetTimeRunning(bool running)
@@ -77,10 +78,14 @@ public class GameManager : Singleton<GameManager>
 
     public void SetPaused(bool paused)
     {
-        //this.SetTimeRunning(!paused);
-        //this.Player.movementEnabled = !paused;
-        //CameraController.Instance.cameraEnabled = !paused;
-        Time.timeScale = paused ? 0 : 1;
+        this.SetTimeRunning(!paused);
+        this.SetInputEnabled(!paused);
+    }
+
+    public void SetInputEnabled(bool enable)
+    {
+        this.Player.movementEnabled = enable;
+        CameraController.Instance.mouseOffsetEnabled = enable;
     }
 
     public void Loop()
@@ -90,6 +95,8 @@ public class GameManager : Singleton<GameManager>
         this._player.transform.position = this.loopPortal.transform.position;
         this._player.facing = Vector2.down;
         this.SetTimeRunning(false);
+
+        if (UIManager.Instance.CurrentScreen != HUDScreen.Instance) UIManager.Instance.CloseTopUIScreen();
 
         // LOOP
         // DISABLE INPUT

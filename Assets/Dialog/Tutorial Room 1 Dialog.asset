@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73d4bb2efdb5f74439f32f2b4cf68322, type: 3}
-  m_Name: Test Dialog
+  m_Name: Tutorial Room 1 Dialog
   m_EditorClassIdentifier: 
-  Text: haha xd dialog go brrrrrrrrrrrrrrrrrr <sprite=3> <sprite=6> <sprite=6> <sprite=6>
-    <sprite=6> <sprite=11>
+  Text: Welcome to space!<page>I'm NAME, your AI assistant. My job is to guide you
+    through the basics of looping!<page>You're currently standing on a <b>LOOP PORTAL</b>

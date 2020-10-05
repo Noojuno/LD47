@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3548375815670234912}
   - component: {fileID: 3548375815670234915}
   - component: {fileID: 3548375815670234914}
+  - component: {fileID: 4992295043991415139}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -79,7 +80,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.115803}
+  m_Offset: {x: -0.0010304451, y: -0.115803}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -90,8 +91,25 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3125, y: 0.205894}
+  m_Size: {x: 0.30356884, y: 0.205894}
   m_EdgeRadius: 0
+--- !u!114 &4992295043991415139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548375815670234927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ee25db5c0e5074ab3d50d8cac16fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 3548375816959072309}
+  OnInteractEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3548375816959072306
 GameObject:
   m_ObjectHideFlags: 0

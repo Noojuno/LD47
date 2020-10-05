@@ -10,6 +10,8 @@ public class HUDScreen : UIScreen<HUDScreen>
 
     void Update()
     {
+        this.loopTimerText.gameObject.SetActive(GameManager.Instance.showTimer);
+
         TimeSpan time = TimeSpan.FromSeconds(GameManager.Instance.timeRemaining);
         String color = GameManager.Instance.timeRemaining <= 5 ? "red" : "white";
         this.loopTimerText.SetText($"TIME REMAINING\n<color={color}>{time:mm\\:ss}</color>");

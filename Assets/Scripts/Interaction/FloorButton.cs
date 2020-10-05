@@ -13,15 +13,21 @@ public class FloorButton : MonoBehaviour
     public Sprite activeSprite;
 
     public bool triggered = false;
-    public UnityEvent<bool> triggerEvent;
+    public UnityEvent<bool> OnPressEvent;
+    public UnityEvent<bool> OnDepressEvent;
 
     private List<Collider2D> currentColliders = new List<Collider2D>();
 
     void Start()
     {
-        if (this.triggerEvent == null)
+        if (this.OnPressEvent == null)
         {
-            this.triggerEvent = new UnityEvent<bool>();
+            this.OnPressEvent = new UnityEvent<bool>();
+        }
+
+        if (this.OnDepressEvent == null)
+        {
+            this.OnDepressEvent = new UnityEvent<bool>();
         }
     }
 
@@ -33,7 +39,7 @@ public class FloorButton : MonoBehaviour
         {
             this.triggered = true;
             this.spriteRenderer.sprite = activeSprite;
-            this.triggerEvent.Invoke(true);
+            this.OnPressEvent.Invoke(true);
         }
 
         this.currentColliders.Add(col);
@@ -49,7 +55,7 @@ public class FloorButton : MonoBehaviour
         {
             this.triggered = false;
             this.spriteRenderer.sprite = inactiveSprite;
-            this.triggerEvent.Invoke(false);
+            this.OnDepressEvent.Invoke(false);
         }
     }
 }

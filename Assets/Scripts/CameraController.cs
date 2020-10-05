@@ -18,23 +18,20 @@ public class CameraController : Singleton<CameraController>
     private Vector3 _offset;
     private Vector3 _oldOffset;
 
-    public bool cameraEnabled = true;
+    public bool mouseOffsetEnabled = true;
 
     void Update()
     {
         //Cursor.SetCursor(this.cursor, Vector2.zero, CursorMode.Auto);
 
-        if (this.cameraEnabled)
+        this.mouseOffset = this.mouseOffsetEnabled ? this.CalculateMouseOffset() : Vector3.zero;
+
+        if (this.target != null)
         {
-            this.mouseOffset = this.CalculateMouseOffset();
+            _oldOffset = _offset;
+            _offset = Vector3.Lerp(_oldOffset, this.mouseOffset, cameraFollowSpeed);
 
-            if (this.target != null)
-            {
-                _oldOffset = _offset;
-                _offset = Vector3.Lerp(_oldOffset, this.mouseOffset, cameraFollowSpeed);
-
-                this.transform.position = this.target.position + this.offset + _offset;
-            }
+            this.transform.position = this.target.position + this.offset + _offset;
         }
     }
 

@@ -40,6 +40,11 @@ public class UIScreen<T> : UIScreen where T : UIScreen<T>
         UIManager.Instance.Close(Instance);
     }
 
+    public void CloseSelf()
+    {
+        Close();
+    }
+
     public override void OnEscapePressed()
     {
         base.OnEscapePressed();
@@ -54,7 +59,7 @@ public abstract class UIScreen : MonoBehaviour
     public virtual bool DestroyWhenClosed => true;
 
     public virtual bool ShouldPause => false;
-
+    
     public virtual void OnOpen()
     {
 

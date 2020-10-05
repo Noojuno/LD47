@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1303045896779655997}
   - component: {fileID: 1303045896779655994}
   - component: {fileID: 1303045896779655996}
-  - component: {fileID: 1303045896779655999}
+  - component: {fileID: 3998635475599112213}
   m_Layer: 0
   m_Name: Pressure Plate
   m_TagString: Untagged
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.374498}
   m_EdgeRadius: 0
---- !u!114 &1303045896779655999
+--- !u!114 &3998635475599112213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,15 +119,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1303045896779655995}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500f3ced3b0867d49bec6718f604d9b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 77e2ce259f650f240a413ab10e06005b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1303045896779655994}
-  requiredObjectsText: {fileID: 0}
   inactiveSprite: {fileID: 6172199209985607747, guid: c87b4df23640be14daeaed9db10e2f0c, type: 3}
   activeSprite: {fileID: -3411921935447882633, guid: c87b4df23640be14daeaed9db10e2f0c, type: 3}
-  activeTextPosition: {x: -0.0011, y: -0.01, z: 0}
-  requiredObjects: 1
   triggered: 0
   triggerEvent:
     m_PersistentCalls:

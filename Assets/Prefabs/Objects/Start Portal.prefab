@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7025973309277490922}
   - component: {fileID: 7025973309277490923}
-  - component: {fileID: 7025973309277490925}
   - component: {fileID: 7025973309277490926}
+  - component: {fileID: 7025973309277490925}
   m_Layer: 0
-  m_Name: Portal
+  m_Name: Start Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 91f81fcd83bf6e541b709f2cedfb6595, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,18 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7025973309277490925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7025973309277490921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c028189522bab584784363828b56cb6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &7025973309277490926
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -112,3 +100,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.01894486}
   serializedVersion: 2
   m_Radius: 0.36894488
+--- !u!114 &7025973309277490925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7025973309277490921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0156226c86178d2469e91dd2b8239147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 7025973309277490923}
+  OnInteractEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  loopDuration: 0
+  isFirst: 0
+  endPortal: 0

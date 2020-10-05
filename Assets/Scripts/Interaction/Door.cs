@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : Powered
 {
     public Animator animator;
     public GameObject lockIcon;
@@ -50,6 +50,28 @@ public class Door : MonoBehaviour
         this.animator.SetBool("Open", open);
     }
 
+    public override void OnPowered()
+    {
+        base.OnPowered();
+
+        this.Open(true);
+    }
+
+    public override void OnUnpowered()
+    {
+        base.OnUnpowered();
+
+        this.Open(false);
+    }
+
+    /* void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (!this.isAutomatic) return;
+        if (collider.isTrigger) return;
+        if (collider.gameObject != GameManager.Instance.Player?.gameObject) return;
+
+        this.Open(true);
+    } */
     //public void OnInteract(GameObject interactor)
     //{
     //    this.Open(!this.isOpen);

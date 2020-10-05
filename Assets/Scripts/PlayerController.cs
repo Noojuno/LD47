@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public Transform holdPosition;
     public GameObject holding;
 
-    private Vector2 movement;
+    public Vector2 movement;
     public Vector2 facing;
 
     private Interactable selectedInteractable;
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
         if (this.holding != null) moveSpeed *= this.holdSpeedMultiplier;
 
-        this.rigidBody.MovePosition(this.rigidBody.position + this.movement * moveSpeed * Time.fixedDeltaTime);
+        if (this.movementEnabled) this.rigidBody.MovePosition(this.rigidBody.position + this.movement * moveSpeed * Time.fixedDeltaTime);
     }
     
     public void Hold(GameObject obj)
@@ -124,7 +124,6 @@ public class PlayerController : MonoBehaviour
             this.selectedInteractable = interactable;
             this.existingInteractDistance = distance;
             this.selectedInteractable?.OnSelect(this);
-            Debug.Log(interactable);
         }
     }
 

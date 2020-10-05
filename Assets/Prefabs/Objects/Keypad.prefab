@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7089339111894625638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.43, z: 0}
+  m_LocalPosition: {x: 0, y: 0.43000007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7089339113494729626}
@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 91f81fcd83bf6e541b709f2cedfb6595, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7089339112892219622}
   - component: {fileID: 8235347973325029767}
+  - component: {fileID: 7634142038266130052}
   m_Layer: 8
   m_Name: Keypad
   m_TagString: Untagged
@@ -140,6 +141,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21, y: 0.31}
   m_EdgeRadius: 0
+--- !u!114 &7634142038266130052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7089339112892219623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e2eeee5f87e15458173dafaa3dac2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 7089339111894625640}
+  - {fileID: 7089339113855342047}
+  OnInteractEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  buttonSpriteRenderer: {fileID: 7089339113855342047}
+  keypadColor: {r: 0.20392157, g: 0.7058824, b: 0.39607844, a: 1}
+  correctCode: 1234
+  CorrectCodeEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7089339113494729627
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7089339113494729627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7089339111894625641}
@@ -209,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7089339113855342045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.43, z: 0}
+  m_LocalPosition: {x: 0, y: 0.43000004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7089339113494729626}
