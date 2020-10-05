@@ -5,7 +5,7 @@ using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
-public class CameraController : MonoBehaviour
+public class CameraController : Singleton<CameraController>
 {
     public Transform target;
     public float cameraFollowSpeed = 0.3f;
@@ -18,18 +18,23 @@ public class CameraController : MonoBehaviour
     private Vector3 _offset;
     private Vector3 _oldOffset;
 
+    public bool cameraEnabled = true;
+
     void Update()
     {
         //Cursor.SetCursor(this.cursor, Vector2.zero, CursorMode.Auto);
 
-        this.mouseOffset = this.CalculateMouseOffset();
-
-        if (this.target != null)
+        if (this.cameraEnabled)
         {
-            _oldOffset = _offset;
-            _offset = Vector3.Lerp(_oldOffset, this.mouseOffset, cameraFollowSpeed);
+            this.mouseOffset = this.CalculateMouseOffset();
 
-            this.transform.position = this.target.position + this.offset + _offset;
+            if (this.target != null)
+            {
+                _oldOffset = _offset;
+                _offset = Vector3.Lerp(_oldOffset, this.mouseOffset, cameraFollowSpeed);
+
+                this.transform.position = this.target.position + this.offset + _offset;
+            }
         }
     }
 

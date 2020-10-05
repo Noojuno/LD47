@@ -15,26 +15,49 @@ public class UIScreen<T> : UIScreen where T : UIScreen<T>
     {
         Instance = (T)null;
     }
+    public static void Open()
+    {
+        if (Instance == null)
+        {
+            UIManager.Instance.CreateInstance<T>();
+        }
+        else
+        {
+            Instance.gameObject.SetActive(true);
+        }
+
+        UIManager.Instance.Open(Instance);
+    }
+
+    public static void Close()
+    {
+        if (Instance == null)
+        {
+            Debug.LogErrorFormat("Trying to close screen {0} but Instance is null", typeof(T));
+            return;
+        }
+
+        UIManager.Instance.Close(Instance);
+    }
+
+    public override void OnEscapePressed()
+    {
+        base.OnEscapePressed();
+
+        Close();
+    }
 }
 
 public abstract class UIScreen : MonoBehaviour
 {
-    public bool IsOverlay => false;
-    public bool DestroyWhenClosed => true;
+    public virtual bool IsOverlay => false;
+    public virtual bool DestroyWhenClosed => true;
 
-    public void Open()
-    {
-        this.OnOpen();
-    }
+    public virtual bool ShouldPause => false;
 
     public virtual void OnOpen()
     {
 
-    }
-
-    public void Close()
-    {
-        this.OnClose();
     }
 
     public virtual void OnClose()
@@ -44,6 +67,6 @@ public abstract class UIScreen : MonoBehaviour
 
     public virtual void OnEscapePressed()
     {
-        this.Close();
+        
     }
 }

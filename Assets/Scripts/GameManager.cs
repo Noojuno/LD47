@@ -12,9 +12,18 @@ public class GameManager : Singleton<GameManager>
 
     public Portal loopPortal;
 
+    public DialogData testData;
+
     private PlayerController _player;
 
     public PlayerController Player => this._player;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        HUDScreen.Open();
+    }
 
     void Start()
     {
@@ -30,6 +39,16 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            DialogScreen.Open(this.testData);
+        }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            DialogScreen.Open("This is a test!!!<page>Page 2?");
+        }
+
         if (timeRemaining > 0 && this.runTimer)
         {
             timeRemaining -= Time.deltaTime;
@@ -58,8 +77,10 @@ public class GameManager : Singleton<GameManager>
 
     public void SetPaused(bool paused)
     {
-        this.SetTimeRunning(!paused);
-        this.Player.movementEnabled = !paused;
+        //this.SetTimeRunning(!paused);
+        //this.Player.movementEnabled = !paused;
+        //CameraController.Instance.cameraEnabled = !paused;
+        Time.timeScale = paused ? 0 : 1;
     }
 
     public void Loop()

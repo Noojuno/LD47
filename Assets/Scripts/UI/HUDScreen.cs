@@ -14,4 +14,9 @@ public class HUDScreen : UIScreen<HUDScreen>
         String color = GameManager.Instance.timeRemaining <= 5 ? "red" : "white";
         this.loopTimerText.SetText($"TIME REMAINING\n<color={color}>{time:mm\\:ss}</color>");
     }
+
+    public override void OnEscapePressed()
+    {
+        PauseScreen.Open();
+    }
 }

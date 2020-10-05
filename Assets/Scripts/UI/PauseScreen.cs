@@ -2,19 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenu : UIScreen<PauseMenu>
+public class PauseScreen : UIScreen<PauseScreen>
 {
-    public override void OnOpen()
-    {
-        base.OnOpen();
+    public override bool ShouldPause => true;
 
-        GameManager.Instance.SetPaused(false);
-    }
-
-    public override void OnClose()
-    {
-        base.OnClose();
-
-        GameManager.Instance.SetPaused(false);
-    }
+    public override bool IsOverlay => true;
 }

@@ -9,8 +9,12 @@ public sealed class UIManager : Singleton<UIManager>
     public Stack<UIScreen> screenStack = new Stack<UIScreen>();
     public UIScreen CurrentScreen => screenStack.Count > 0 ? screenStack.Peek() : null;
 
-    public PauseMenu PauseMenuPrefab;
-    public HUDScreen HUDScreenPrefab;
+    public List<UIScreen> Prefabs = new List<UIScreen>();
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     void Update()
     {
@@ -29,15 +33,11 @@ public sealed class UIManager : Singleton<UIManager>
 
     private T GetPrefab<T>() where T : UIScreen
     {
-        // Get prefab dynamically, based on public fields set from Unity
-        // You can use private fields with SerializeField attribute too
-        var fields = this.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-        foreach (var field in fields)
+        foreach (var prefab in this.Prefabs)
         {
-            var prefab = field.GetValue(this) as T;
-            if (prefab != null)
+            if (prefab.GetType() == typeof(T))
             {
-                return prefab;
+                return (T)prefab;
             }
         }
 
@@ -46,6 +46,8 @@ public sealed class UIManager : Singleton<UIManager>
 
     public void Open(UIScreen instance)
     {
+        if (this.CurrentScreen == instance) return;
+
         if (!instance.IsOverlay)
         {
             foreach (var screen in screenStack)
@@ -57,9 +59,19 @@ public sealed class UIManager : Singleton<UIManager>
             }
         }
 
-        var topCanvas = instance.GetComponent<Canvas>();
-        var previousCanvas = this.CurrentScreen.GetComponent<Canvas>();
-        topCanvas.sortingOrder = previousCanvas.sortingOrder + 1;
+        if (instance.ShouldPause)
+        {
+            GameManager.Instance.SetPaused(true);
+        }
+
+        if (this.CurrentScreen != null)
+        {
+            var topCanvas = instance.GetComponent<Canvas>();
+            var previousCanvas = this.CurrentScreen.GetComponent<Canvas>();
+            topCanvas.sortingOrder = previousCanvas.sortingOrder + 1;
+        }
+
+        instance.OnOpen();
 
         this.screenStack.Push(instance);
     }
@@ -85,6 +97,8 @@ public sealed class UIManager : Singleton<UIManager>
     {
         var instance = screenStack.Pop();
 
+        instance.OnClose();
+
         if (instance.DestroyWhenClosed)
         {
             Destroy(instance.gameObject);
@@ -103,5 +117,17 @@ public sealed class UIManager : Singleton<UIManager>
             if (!screen.IsOverlay)
                 break;
         }
+
+        bool shouldPause = false;
+        foreach (var screen in screenStack)
+        {
+            if (screen.ShouldPause)
+            {
+                shouldPause = true;
+                break;
+            }
+        }
+
+        GameManager.Instance.SetPaused(shouldPause);
     }
 }
