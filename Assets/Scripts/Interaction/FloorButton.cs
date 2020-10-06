@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class FloorButton : MonoBehaviour
 {
+    public AudioSource audioSource;
     public SpriteRenderer spriteRenderer;
 
     public Sprite inactiveSprite;
@@ -39,6 +40,7 @@ public class FloorButton : MonoBehaviour
         {
             this.triggered = true;
             this.spriteRenderer.sprite = activeSprite;
+            this.audioSource.Play();
             this.OnPressEvent.Invoke(true);
         }
 
@@ -55,6 +57,7 @@ public class FloorButton : MonoBehaviour
         {
             this.triggered = false;
             this.spriteRenderer.sprite = inactiveSprite;
+            this.audioSource.Play();
             this.OnDepressEvent.Invoke(false);
         }
     }

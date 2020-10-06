@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (this.movementEnabled) this.DoMovement();
+        this.DoMovement();
         this.DoHolding();
         this.DoInput();
     }
@@ -56,9 +56,16 @@ public class PlayerController : MonoBehaviour
     void DoMovement()
     {
         // INPUT
-        this.movement.x = Input.GetAxisRaw("Horizontal");
-        this.movement.y = Input.GetAxisRaw("Vertical");
-        this.movement.Normalize();
+        if(this.movementEnabled)
+        {
+            this.movement.x = Input.GetAxisRaw("Horizontal");
+            this.movement.y = Input.GetAxisRaw("Vertical");
+            this.movement.Normalize();
+        }
+        else
+        {
+            this.movement = Vector2.zero;
+        }
 
         if (this.movement.sqrMagnitude > 0)
         {

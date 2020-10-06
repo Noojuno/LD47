@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d4bb2efdb5f74439f32f2b4cf68322, type: 3}
+  m_Name: Tutorial Room 1 Dialog - Introduction
+  m_EditorClassIdentifier: 
+  Text: Welcome to space, recruit!<page>I'm S.E.R.A.P.H, your AI assistant. My job
+    is to guide you through the basics of looping!<page>You're currently standing
+    on a <b>LOOP POINT</b>. Loop Points serve as the start point of your loops, and
+    are where you'll end up when your loop timer runs out. You can change your loop
+    point by activating a different one - but make sure to do so before the loop
+    timer runs out otherwise you'll be sent back to your previous loop point.<page>You
+    can view your loop timer in the top left of your suits integrated heads-up display.
+    If you ever need to end your loop before the timer runs out, you can do so by
+    pressing <b>Q</b>.<page>Your loop timer does not go down while you're standing
+    on a Loop Point, so you can take your time after looping.<page>Proceed through
+    the doors ahead when you're ready to continue.

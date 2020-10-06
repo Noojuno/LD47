@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d4bb2efdb5f74439f32f2b4cf68322, type: 3}
+  m_Name: Tutorial Room 3 Dialog - Doors
+  m_EditorClassIdentifier: 
+  Text: There are a few different types of doors on this station. The first is a
+    <b>One-Way Door</b>, indicated by an arrow symbol on the door. These doors let
+    you go through the door the direction the arrow is pointing, but not come back
+    the other way.<page>The next type of door is a <b>Locking Door</b>. These doors
+    have lock symbols on them, and will stay open when unpowered, as long as all
+    power requirements have previously been met.<page>The final door type is the
+    <b>Automatic Door</b>. This is the most simple type of door, and will just open
+    when you are in close proximity. These doors have no special symbol, but will
+    never have wires connected to it.<page>A door can be of multiple types a the
+    same time, so make sure you pay attention to the icons on the door.

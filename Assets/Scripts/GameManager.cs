@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public AudioSource audioSource;
+
     public float loopLength = 10;
     public float timeRemaining = 10;
     public bool runTimer = false;
     public bool showTimer = true;
 
     public Portal loopPortal;
-
-    public DialogData testData;
 
     private PlayerController _player;
 
@@ -40,16 +40,6 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            DialogScreen.Open(this.testData);
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            DialogScreen.Open("This is a test!!!<page>Page 2?");
-        }
-
         if (timeRemaining > 0 && this.runTimer)
         {
             timeRemaining -= Time.deltaTime;
@@ -95,6 +85,8 @@ public class GameManager : Singleton<GameManager>
         this._player.transform.position = this.loopPortal.transform.position;
         this._player.facing = Vector2.down;
         this.SetTimeRunning(false);
+
+        this.audioSource.Play();
 
         if (UIManager.Instance.CurrentScreen != HUDScreen.Instance) UIManager.Instance.CloseTopUIScreen();
 

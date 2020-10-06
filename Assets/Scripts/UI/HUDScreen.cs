@@ -7,10 +7,12 @@ using UnityEngine;
 public class HUDScreen : UIScreen<HUDScreen>
 {
     public TextMeshProUGUI loopTimerText;
+    public TextMeshProUGUI loopImminentText;
 
     void Update()
     {
         this.loopTimerText.gameObject.SetActive(GameManager.Instance.showTimer);
+        this.loopImminentText.gameObject.SetActive(GameManager.Instance.timeRemaining < 5f);
 
         TimeSpan time = TimeSpan.FromSeconds(GameManager.Instance.timeRemaining);
         String color = GameManager.Instance.timeRemaining <= 5 ? "red" : "white";

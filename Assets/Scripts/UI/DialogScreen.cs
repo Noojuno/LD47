@@ -36,7 +36,7 @@ public class DialogScreen : UIScreen<DialogScreen>
             if (this.typing)
             {
                 this.StopTyping();
-                this.dialogText.maxVisibleCharacters = this.dialogText.textInfo.pageInfo[this.dialogText.pageToDisplay - 1].lastCharacterIndex;
+                this.dialogText.maxVisibleCharacters = this.dialogText.textInfo.pageInfo[this.dialogText.pageToDisplay - 1].lastCharacterIndex + 1;
             }
             else if (currentPage == totalPages)
             {
@@ -62,12 +62,12 @@ public class DialogScreen : UIScreen<DialogScreen>
 
     }
 
-    public void SetText(String text)
+    public void SetText(string text)
     {
         this.StopTyping();
         this.dialogText.SetText(text);
         this.dialogText.maxVisibleCharacters = 0;
-        this.StartTyping();
+        if (!string.IsNullOrEmpty(text)) this.StartTyping();
     }
 
     public void StartTyping()

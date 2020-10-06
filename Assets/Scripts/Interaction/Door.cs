@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Door : Powered
 {
+    public AudioSource audioSource;
     public Animator animator;
     public GameObject lockIcon;
     public GameObject oneWayIcon;
     public GameObject bothIcons;
-    public bool stayOpen = false;
     public bool isLocked;
     public bool isOpen;
     public bool isAutomatic;
@@ -32,7 +32,7 @@ public class Door : Powered
             }
             else
             {
-                this.Open(false);
+                if (this.isOpen) this.Open(false);
             }
         }
     }
@@ -44,10 +44,12 @@ public class Door : Powered
 
     public void Open(bool open)
     {
-        if (this.isOpen && open && this.stayOpen) return;
+        if (!open && this.isLocked && this.isOpen) return;
 
         this.isOpen = open;
         this.animator.SetBool("Open", open);
+
+        this.audioSource.Play();
     }
 
     public override void OnPowered()

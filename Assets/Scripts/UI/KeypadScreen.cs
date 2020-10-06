@@ -64,10 +64,10 @@ public class KeypadScreen : UIScreen<KeypadScreen>
         {
             if (this.codeBuffer == keypad.correctCode)
             {
+                if (!this.keypad.isSolved) this.StartCoroutine(this.DelayedClose());
+
                 this.keypad.OnCorrectCodeEvent.Invoke();
                 this.inputText.SetText("CORRECT");
-
-                if (!this.keypad.isSolved) this.StartCoroutine(this.DelayedClose());
             }
             else
             {
